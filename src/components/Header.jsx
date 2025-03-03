@@ -9,7 +9,7 @@ function Header() {
           alt="Logo"
         />
         <nav>
-          <a href="#">Page Accueil</a>
+          <a href="/">Page Accueil</a>
         </nav>
       </header>
     </>
