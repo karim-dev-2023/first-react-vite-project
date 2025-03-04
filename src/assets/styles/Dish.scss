@@ -4,4 +4,12 @@
     height: 250px;
     object-fit: cover;
   }
+  .vstack{
+    span{
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 15px;
+    }
+  }
 }
