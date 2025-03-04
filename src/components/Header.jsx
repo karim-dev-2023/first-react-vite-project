@@ -15,9 +15,12 @@ function Header() {
             />
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse className="justify-content-end" id="basic-navbar-nav">
+          <Navbar.Collapse
+            className="justify-content-end"
+            id="basic-navbar-nav"
+          >
             <Navbar.Text>
-              <a href="/">Page Accueil</a>
+              <Nav.Link href="/">Accueil</Nav.Link>
             </Navbar.Text>
           </Navbar.Collapse>
         </Container>
