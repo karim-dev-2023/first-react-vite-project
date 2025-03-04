@@ -1,17 +1,11 @@
-import { Card, Badge, Stack } from "react-bootstrap";
+import { Card, Badge } from "react-bootstrap";
 import "../assets/styles/Dish.scss";
 
 function Dish({ nameItem, imageSrc, price, isNew = false }) {
   return (
     <Card>
-      {isNew && (
-        <Stack>
-          <Badge pill bg="primary"  >
-            Nouveau
-          </Badge>
-        </Stack>
-      )}
-      
+      {isNew && <Badge bg="primary">Nouveau</Badge>}
+
       <Card.Img variant="top" src={imageSrc} />
       <Card.Body>
         <Card.Title>{nameItem}</Card.Title>
