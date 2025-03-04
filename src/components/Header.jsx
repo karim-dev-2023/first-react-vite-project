@@ -19,9 +19,9 @@ function Header() {
             className="justify-content-end"
             id="basic-navbar-nav"
           >
-            <Navbar.Text>
+            <Navbar>
               <Nav.Link href="/">Accueil</Nav.Link>
-            </Navbar.Text>
+            </Navbar>
           </Navbar.Collapse>
         </Container>
       </Navbar>
