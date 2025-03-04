@@ -1,4 +1,4 @@
-import Card from 'react-bootstrap/Card';
+import Card from "react-bootstrap/Card";
 import "../assets/styles/Dish.scss";
 
 function Dish({ nameItem, imageSrc, price }) {
