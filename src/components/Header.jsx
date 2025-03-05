@@ -1,9 +1,9 @@
 import "../assets/styles/Header.scss";
-import {Container,Navbar,Nav,Image} from "react-bootstrap";
+import {Container,Navbar,Nav,Image,Badge} from "react-bootstrap";
 
 import logo from "../assets/images/logo.webp";
 
-function Header() {
+function Header({cartCount}) {
   return (
     <>
       <header>
@@ -22,6 +22,7 @@ function Header() {
             >
               <Nav>
                 <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="#" className="bg-primary text-white rounded ">Panier <Badge bg="secondary m4-2">{cartCount}</Badge></Nav.Link>
               </Nav>
             </Navbar.Collapse>
           </Container>
