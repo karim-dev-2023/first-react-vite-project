@@ -16,7 +16,7 @@ function App() {
   ];
 
   // Filtrage des utilisateurs actifs
-const stockDish = dishs.filter(dishs => dishs.stock);
+const stockDish = dishs.filter(dishs => dishs.stock > 0);
 
   return (
     <>
