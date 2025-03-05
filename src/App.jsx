@@ -39,19 +39,18 @@ function App() {
   ];
 
   const [showNewOnly, setshowNewOnly] = useState(false);
-  const [filterDish, setFilterDish] = useState(
-    dishs.filter((dishs) => dishs.stock > 0)
-  );
+
   const [button, setButton] = useState("Nouveautés uniquement");
+
+  // Filtrage des utilisateurs actifs
+  const stockDish = dishs.filter(dish => dish.stock > 0 && (!showNewOnly || dish.isNew));
 
   const handleShowNewOnly = () => {
     if (showNewOnly) {
       setshowNewOnly(false);
-      setFilterDish(dishs.filter((dishs) => dishs.stock > 0));
       setButton("Nouveautés uniquement");
     } else {
       setshowNewOnly(true);
-      setFilterDish(dishs.filter((dishs) => dishs.isNew));
       setButton("Voir tous les plats");
     }
   };
@@ -67,7 +66,7 @@ function App() {
             </Button>
           </div>
           <Row xs={1} md={3}>
-            {filterDish.map((dish) => (
+            {stockDish.map((dish) => (
               <Col md={4} key={dish.id}>
                 <Dish
                   nameItem={dish.name}
