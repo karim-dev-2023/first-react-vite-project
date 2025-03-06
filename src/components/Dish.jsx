@@ -1,11 +1,9 @@
 import { Card, Badge, Button } from "react-bootstrap";
 import "../assets/styles/Dish.scss";
-import { CartContext } from "../context/CartContext";
-import { useContext } from "react";
+import { useCart } from "../hooks/useCart";
 
 function Dish({ nameItem, imageSrc, price, isNew = false, setCount }) {
-  const { dispatch } = useContext(CartContext);
-
+  const { increment, decrement } = useCart();
   return (
     <Card>
       {isNew && <Badge bg="primary">Nouveau</Badge>}
@@ -16,7 +14,7 @@ function Dish({ nameItem, imageSrc, price, isNew = false, setCount }) {
         <Card.Text>{price} €</Card.Text>
         <Button
           onClick={() => {
-            dispatch({ type: "increment" });
+            increment();
             setCount((prevCount) => prevCount + 1);
           }}
           variant="primary"
@@ -26,7 +24,7 @@ function Dish({ nameItem, imageSrc, price, isNew = false, setCount }) {
         </Button>
         <Button
           onClick={() => {
-            dispatch({ type: "decrement" });
+            decrement();
             setCount((prevCount) => Math.max(prevCount - 1, 0));
           }}
           variant="danger"

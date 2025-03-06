@@ -2,11 +2,10 @@ import "../assets/styles/Header.scss";
 import { Container, Navbar, Nav, Image, Badge } from "react-bootstrap";
 
 import logo from "../assets/images/logo.webp";
-import { CartContext } from "../context/CartContext";
-import { useContext } from "react";
+import { useCart } from "../hooks/useCart";
 
 function Header() {
-  const { cartCount } = useContext(CartContext);
+  const { count } = useCart();
 
   return (
     <>
@@ -24,7 +23,7 @@ function Header() {
               <Nav>
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="#" className="bg-primary text-white rounded ">
-                  Panier <Badge bg="secondary m4-2">{cartCount}</Badge>
+                  Panier <Badge bg="secondary m4-2">{count}</Badge>
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
