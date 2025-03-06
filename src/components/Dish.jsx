@@ -4,11 +4,6 @@ import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 
 function Dish({ nameItem, imageSrc, price, isNew = false }) {
-  // Plus besoin la fonctionnalité ajout d'un panier remplace
-  // const addCartHandleClick = (message) => {
-  //   alert(message);
-  // };
-
 
   const {addToCart} = useContext(CartContext);
 

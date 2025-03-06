@@ -40,7 +40,6 @@ function App() {
 
   // Ce sont des État
   const [showNewOnly, setshowNewOnly] = useState(false);
-  // const [cartCount, setCartCount] = useState(0);
 
   // Filtrage des utilisateurs actifs
   const stockDish = dishs.filter(
@@ -50,10 +49,6 @@ function App() {
   function handleShowNewOnly() {
     setshowNewOnly((prevState) => !prevState);
   }
-
-  // function addToCart  ()  {
-  //   setCartCount((prevCount) => prevCount + 1);
-  // };
 
   return (
     <>

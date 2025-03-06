@@ -6,8 +6,7 @@ import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 
 function Header() {
-  const { cart } = useContext(CartContext);
-console.log(cart);
+  const { cartCount } = useContext(CartContext);
 
   return (
     <>
@@ -25,7 +24,7 @@ console.log(cart);
               <Nav>
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="#" className="bg-primary text-white rounded ">
-                  Panier <Badge bg="secondary m4-2">{cart}</Badge>
+                  Panier <Badge bg="secondary m4-2">{cartCount}</Badge>
                 </Nav.Link>
               </Nav>
             </Navbar.Collapse>
