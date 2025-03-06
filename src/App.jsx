@@ -40,36 +40,29 @@ function App() {
 
   // Ce sont des État
   const [showNewOnly, setshowNewOnly] = useState(false);
-  const [button, setButton] = useState("Nouveautés uniquement");
-  const [cartCount, setCartCount] = useState(0);
+  // const [cartCount, setCartCount] = useState(0);
 
   // Filtrage des utilisateurs actifs
   const stockDish = dishs.filter(
     (dish) => dish.stock > 0 && (!showNewOnly || dish.isNew)
   );
 
-  const handleShowNewOnly = () => {
-    if (showNewOnly) {
-      setshowNewOnly(false);
-      setButton("Nouveautés uniquement");
-    } else {
-      setshowNewOnly(true);
-      setButton("Voir tous les plats");
-    }
-  };
+  function handleShowNewOnly() {
+    setshowNewOnly((prevState) => !prevState);
+  }
 
-  const addToCart = () => {
-    setCartCount((prevCount) => prevCount + 1);    
-  };
+  // function addToCart  ()  {
+  //   setCartCount((prevCount) => prevCount + 1);
+  // };
 
   return (
     <>
-      <Header cartCount={cartCount} />
+      <Header />
       <main>
         <Container className="containerPrincipal">
           <div className="d-grid gap-2">
             <Button bg="primary" onClick={handleShowNewOnly}>
-              {button}
+              {showNewOnly ? "Voir tous les plats" : "Nouveautés uniquement"}
             </Button>
           </div>
           <Row xs={1} md={3}>
@@ -80,7 +73,7 @@ function App() {
                   imageSrc={dish.imageSrc}
                   price={dish.prix}
                   isNew={dish.isNew}
-                  addToCart={addToCart}
+                
                 />
               </Col>
             ))}
