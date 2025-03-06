@@ -3,7 +3,7 @@ import "../assets/styles/Dish.scss";
 import { CartContext } from "../context/CartContext";
 import { useContext } from "react";
 
-function Dish({ nameItem, imageSrc, price, isNew = false }) {
+function Dish({ nameItem, imageSrc, price, isNew = false, setCount }) {
   const { dispatch } = useContext(CartContext);
 
   return (
@@ -15,14 +15,20 @@ function Dish({ nameItem, imageSrc, price, isNew = false }) {
         <Card.Title>{nameItem}</Card.Title>
         <Card.Text>{price} €</Card.Text>
         <Button
-          onClick={() => dispatch({ type: "increment" })}
+          onClick={() => {
+            dispatch({ type: "increment" });
+            setCount((prevCount) => prevCount + 1);
+          }}
           variant="primary"
           className="mr-2"
         >
           Add To Cart
         </Button>
         <Button
-          onClick={() => dispatch({ type: "decrement" })}
+          onClick={() => {
+            dispatch({ type: "decrement" });
+            setCount((prevCount) => Math.max(prevCount - 1, 0));
+          }}
           variant="danger"
         >
           Remove To Cart

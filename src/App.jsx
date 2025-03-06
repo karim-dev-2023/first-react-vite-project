@@ -6,7 +6,8 @@ import Dish from "./components/Dish.jsx";
 
 // Boostrap Import
 import { Container, Row, Col, Button } from "react-bootstrap";
-import { useState } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
+import { CartContext } from "./context/CartContext";
 
 function App() {
   // Array
@@ -50,11 +51,26 @@ function App() {
     setshowNewOnly((prevState) => !prevState);
   }
 
+  const { cartCount } = useContext(CartContext);
+  const [count, setCount] = useState(cartCount);
+  const prevCartCountRef = useRef();
+
+  useEffect(() => {
+    prevCartCountRef.current = count; // Stocke la valeur avant le re-render
+  }, [count]);
+
   return (
     <>
       <Header />
       <main>
         <Container className="containerPrincipal">
+          {(prevCartCountRef.current >= 0 && count>=0) &&
+            "Le panier est passé de " +
+              prevCartCountRef.current +
+              " à " +
+              count +
+              " article"}
+
           <div className="d-grid gap-2">
             <Button bg="primary" onClick={handleShowNewOnly}>
               {showNewOnly ? "Voir tous les plats" : "Nouveautés uniquement"}
@@ -68,7 +84,7 @@ function App() {
                   imageSrc={dish.imageSrc}
                   price={dish.prix}
                   isNew={dish.isNew}
-                
+                  setCount={setCount}
                 />
               </Col>
             ))}
