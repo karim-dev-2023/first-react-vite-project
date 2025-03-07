@@ -8,9 +8,12 @@ import Dish from "./components/Dish.jsx";
 import { Container, Row, Col, Button } from "react-bootstrap";
 import { useState, useEffect, useRef, useContext } from "react";
 import { CartContext } from "./context/CartContext";
-
+import { useCart } from "./hooks/useCart";
 
 function App() {
+
+  const { count } = useCart();
+
   // Array
   const dishs = [
     {
@@ -53,19 +56,18 @@ function App() {
   }
 
   const { cartCount } = useContext(CartContext);
-  const [count, setCount] = useState(cartCount);
-  const prevCartCountRef = useRef();
+  const prevCartCountRef = useRef(cartCount);
 
   useEffect(() => {
-    prevCartCountRef.current = count; // Stocke la valeur avant le re-render
-  }, [count]);
+    prevCartCountRef.current = cartCount; // Stocke la valeur avant le re-render
+  }, [cartCount]);
 
   return (
     <>
       <Header />
       <main>
         <Container className="containerPrincipal">
-          {(prevCartCountRef.current >= 0 && count>=0) &&
+          {(prevCartCountRef.current >= 0 && count>0) &&
             "Le panier est passé de " +
               prevCartCountRef.current +
               " à " +
@@ -85,7 +87,6 @@ function App() {
                   imageSrc={dish.imageSrc}
                   price={dish.prix}
                   isNew={dish.isNew}
-                  setCount={setCount}
                 />
               </Col>
             ))}

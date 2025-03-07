@@ -2,7 +2,7 @@ import { Card, Badge, Button } from "react-bootstrap";
 import "../assets/styles/Dish.scss";
 import { useCart } from "../hooks/useCart";
 
-function Dish({ nameItem, imageSrc, price, isNew = false, setCount }) {
+function Dish({ nameItem, imageSrc, price, isNew = false}) {
   const { increment, decrement } = useCart();
   return (
     <Card>
@@ -13,20 +13,14 @@ function Dish({ nameItem, imageSrc, price, isNew = false, setCount }) {
         <Card.Title>{nameItem}</Card.Title>
         <Card.Text>{price} €</Card.Text>
         <Button
-          onClick={() => {
-            increment();
-            setCount((prevCount) => prevCount + 1);
-          }}
+          onClick={increment}
           variant="primary"
           className="mr-2"
         >
           Add To Cart
         </Button>
         <Button
-          onClick={() => {
-            decrement();
-            setCount((prevCount) => Math.max(prevCount - 1, 0));
-          }}
+          onClick={decrement}
           variant="danger"
         >
           Remove To Cart
